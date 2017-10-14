@@ -1,0 +1,25 @@
+<div><a href="/meetups">HOME</a></div>
+<h1>Create A NEW MEETUP!</h1>
+<form action="/meetups/new" method="post">
+  <div class="form-field">
+    <label for="name">Meetup Name:
+      <input class="input-field" type="text" name="name" value="<%= @meetup_name  %>" />
+    </label><br>
+  </div>
+  <div class="form-field">
+    <label for="description">Meetup Description:
+      <textarea class="input-field" type="text" name="description" value="<%= @meetup_description  %>"></textarea>
+    </label><br>
+  </div>
+  <div class="form-field">
+    <label for="location">Meetup Location:
+      <input class="input-field" type="text" name="location" value="<%= @meetup_location  %>"/>
+    </label><br>
+  </div>
+  <input class="input-field" type="submit" name="submit" value="Submit">
+</form>
+<% if @error %>
+  <h3 class="error-message">
+    <%=@error  %>
+  </h3>
+<% end %>

@@ -1,0 +1,27 @@
+<div><a href="/meetups">HOME</a></div>
+<h1><%= @current_meetup.name  %></h1>
+<hr/>
+<h3>Description:</h3>
+<p class="show-page" ><%= @current_meetup.description  %></p>
+
+<h3>Location:</h3>
+<p class="show-page" ><%= @current_meetup.location  %></p>
+
+<h3>Host:</h3>
+<p><img class="user-avatars" src="<%= @host.avatar_url  %>" alt="<%= @host.username %>">   <%= @host.username  %></p>
+
+<h3> Attendees:</h3>
+<ul>
+  <% if @attendees %>
+    <% @attendees.each do |attendee|%>
+      <p><img class="user-avatars" src="<%= attendee.avatar_url  %>" alt="<%= attendee.username %>">    <%= attendee.username %></p>
+    <% end %>
+  <% end %>
+</ul>
+
+<form action="/meetups/join_meetup" method="post">
+  <% if @error %>
+  <h3 class="error-message" ><%=@error %></h3>
+  <% end %>
+  <button class="buttons" type="submit" name="id" value="<%= @id %>" >Join Meetup</button>
+</form>
